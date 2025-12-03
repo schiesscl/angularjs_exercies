@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/angular@1.8.2/angular.min.js"></script>
+</head>
+<body>
+    
+
+
+    <script>
+        let app = angular.module("myShoppingList", []);
+        app.controller("myCtrl", function ($scope) {
+            $scope.items = ["Apple", "Orange", "Cherry"];
+            $scope.addItem = function () {
+                $scope.errortext = "";
+                if (!$scope.addMe) {
+                    return;
+                }
+                if ($scope.items.indexOf($scope.addMe) == -1) {
+                    $scope.items.push($scope.addMe);
+                } else {
+                    $scope.errortext = "El artículo ya está en tu lista de compras.";
+                }
+            }
+            $scope.removeItem = function (x) {
+                $scope.errortext = "";
+                $scope.items.splice(x, 1);
+            }
+        });
+    </script>
+
+    <div ng-app="myShoppingList" ng-cloak ng-controller="myCtrl" class="card-2 margin" style="max-width: 400px;">
+        <header class="container light grey padding-16">
+            <h3>My Shopping List</h3>
+        </header>
+        <!-- Agregado para poder añadir nuevos elementos -->
+        <div class="container padding-16">
+            <input type="text" ng-model="addMe" placeholder="Añadir artículo">
+            <button ng-click="addItem()">Añadir</button>
+            <p style="color:red;">{{errortext}}</p>
+        </div>
+        <ul class="ul">
+            <li ng-repeat="x in items" class="padding-16">
+                {{ x }}
+                <span ng-click="removeItem($index)"
+                style="cursor:pointer" class="right margin-right">x</span>
+
+            </li>
+        </ul>
+
+    </div>
+</body>
+</html>

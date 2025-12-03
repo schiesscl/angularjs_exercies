@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/angular@1.8.2/angular.min.js"></script>
+    <style>
+        .highlight {
+            background-color: yellow;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body ng-app="myApp">
+    <div ng-controller="myController">
+        <p ng-class="{highlight: isHighlighted}">Dynamic class binding</p>
+        <button ng-click="isHighlighted = !isHighlighted">Toggle Highlight</button>
+    </div>
+
+    <script>
+        // 1. Definir el módulo de la aplicación
+        let app = angular.module("myApp", []);
+
+        // 2. Añadir el controlador al módulo
+        app.controller('myController', function($scope) {
+            $scope.isHighlighted = true;
+        });
+    </script>
+</body>
+</html>

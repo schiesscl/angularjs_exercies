@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>AngularJS</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="css/style.css" rel="stylesheet">
+        <script src="https://cdn.jsdelivr.net/npm/angular@1.8.2/angular.min.js"></script>
+    </head>
+    <body ng-app="myApp">
+        <div ng-controller="myController">
+            <h1>{{greeting}}</h1>
+            <p>Service Data: {{ServiceData}}</p>
+
+        </div>
+
+        <script>
+            let app = angular.module("myApp", []);
+
+            // 1. Definir el servicio correctamente
+            app.service("myService", function () {
+                this.ServiceData = "Hello from myService!";
+            });
+
+            // 2. Inyectar el servicio en el controlador
+            app.controller("myController", function ($scope, myService) {
+                $scope.greeting = "Welcome to AngularJS Programming";
+                // 3. Asignar los datos del servicio al scope
+                $scope.ServiceData = myService.ServiceData;
+            });
+        </script>
+    </body>
+</html>

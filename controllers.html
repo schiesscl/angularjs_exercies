@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/angular@1.8.2/angular.min.js"></script>
+</head>
+<body>
+    <h2>AngularJS Controller Application</h2>
+
+    <div ng-app="mainApp" ng-controller="studentController">
+        <label>Enter first name : <input type="text" ng-model="student.firstName"></label><br><br>
+        <label>Enter last name : <input type="text" ng-model="student.lastName"></label><br><br>
+        You are entering : {{ student.fullName() }}
+    </div>
+
+    <script>
+        let mainApp = angular.module("mainApp", []);
+        mainApp.controller("studentController", function ($scope) {
+            $scope.student = {
+                firstName: "John",
+                lastName: "Smith",
+                fullName: function () {
+                    let studentObject = $scope.student;
+                    return studentObject.firstName + " " + studentObject.lastName;
+                }
+            };
+        });
+    </script>
+</body>
+</html>

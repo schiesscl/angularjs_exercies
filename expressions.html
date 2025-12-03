@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AngularJS Expressions</title>
+    <script src="https://cdn.jsdelivr.net/npm/angular@1.8.2/angular.min.js"></script>
+</head>
+<body>
+    <div ng-controller="myController">
+        <h1>{{ greeting }}</h1>
+
+        <p>Expresión numérica: La suma de 5 y 10 es: {{ 5 + 10 }}</p>
+
+        <p>Expresión de cadena: Mi nombre completo es: {{ person.firstName + " " + person.lastName }}</p>
+
+        <p>Expresión de objeto: Mi apellido es {{ person.lastName }}</p>
+
+        <p>Expresión de array: Un punto del array es {{ points[2] }}</p>
+    </div>
+
+    <div ng-init="quantity=2;cost=5">
+        <h2>Cálculo de Costo con ng-init</h2>
+        <p>Cantidad: {{ quantity }}</p>
+        <p>Costo: {{ cost }}</p>
+        <p>Total: {{ quantity * cost }}</p>
+    </div>
+
+    <script>
+        let app = angular.module("myApp", []);
+
+        app.controller('myController', function($scope) {
+            $scope.greeting = "Hola, ¡Expresiones de AngularJS!";
+            $scope.person = {
+                firstName: "John",
+                lastName: "Doe"
+            };
+            $scope.points = [1, 15, 19, 2, 40];
+        });
+    </script>
+</body>
+</html>
