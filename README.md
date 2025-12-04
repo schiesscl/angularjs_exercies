@@ -4,55 +4,55 @@ Este repositorio contiene una serie de ejercicios prácticos para aprender los c
 
 ## Lista de Ejercicios
 
-1.**[Aplicación (Lista de Compras)](1_application.html)**
+1.**[Aplicación (Lista de Compras)](01_application.html)**
 
     -**Descripción**: Una aplicación simple de lista de compras que permite añadir y eliminar artículos.
 
     -**Conceptos**: `ng-app`, `ng-controller`, `ng-model`, `ng-repeat`, `ng-click`, `ng-cloak`.
 
-2.**[Módulos y Servicios](2_modules.html)**
+2.**[Módulos y Servicios](02_modules.html)**
 
     -**Descripción**: Muestra cómo definir un módulo, un servicio y un controlador, y cómo inyectar el servicio en el controlador para compartir datos.
 
     -**Conceptos**: `angular.module`, `app.controller`, `app.service`.
 
-3.**[Expresiones](3_expressions.html)**
+3.**[Expresiones](03_expressions.html)**
 
     -**Descripción**: Demuestra el uso de expresiones de AngularJS para mostrar datos numéricos, de cadena, objetos y arrays. También introduce `ng-init`.
 
     -**Conceptos**: `{{ expression }}`, `ng-init`.
 
-4.**[Controladores](4_controllers.html)**
+4.**[Controladores](04_controllers.html)**
 
     -**Descripción**: Explica cómo definir un controlador y adjuntar propiedades y métodos al `$scope` para interactuar con la vista.
 
     -**Conceptos**: `ng-controller`, `$scope`, métodos en el scope.
 
-5.**[Scope](5_scope.html)**
+5.**[Scope](05_scope.html)**
 
     -**Descripción**: Ilustra que cada controlador tiene su propio `$scope`, creando un límite de aislamiento entre ellos.
 
     -**Conceptos**: Aislamiento del `$scope`.
 
-6.**[Modelos](6_models.html)**
+6.**[Modelos](06_models.html)**
 
     -**Descripción**: Muestra el uso de la directiva `ng-model` para lograr el enlace de datos bidireccional (two-way data binding) con un campo de entrada.
 
     -**Conceptos**: `ng-model`.
 
-7.**[Enlace de Datos (Data Binding)](7_data_binding.html)**
+7.**[Enlace de Datos (Data Binding)](07_data_binding.html)**
 
     -**Descripción**: Un ejemplo claro y sencillo de enlace de datos bidireccional entre un campo de entrada y una expresión en la vista.
 
     -**Conceptos**: `ng-model`, `{{ expression }}`.
 
-8.**[Manipulación del DOM](8_html_dom.html)**
+8.**[Manipulación del DOM](08_html_dom.html)**
 
     -**Descripción**: Demuestra cómo manipular el DOM de forma declarativa utilizando directivas como `ng-class` y `ng-click` para cambiar estilos dinámicamente.
 
     -**Conceptos**: `ng-class`, `ng-click`.
 
-9.**[Filtros](9_filters.html)**
+9.**[Filtros](09_filters.html)**
 
     -**Descripción**: Muestra cómo usar filtros incorporados (`uppercase`) y cómo crear filtros personalizados para transformar los datos en la vista.
 
