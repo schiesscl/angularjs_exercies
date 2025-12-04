@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/angular@1.8.2/angular.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/angular-route@1.8.2/angular-route.min.js"></script>
+</head>
+<body ng-app="myApp">
+    <p>
+        <a href="#!/">Main</a>
+        <a href="#!/Canada">Canada</a>
+        <a href="#!/UK">UK</a>
+    </p>
+
+    <p>
+        Click on the links to read about Canada and UK.
+    </p>
+
+    <div ng-view></div>
+
+    <script type="text/ng-template" id="Main.htm">
+        <h2>Main Page</h2>
+        <p>Welcome to the main page!</p>
+    </script>
+
+    <script type="text/ng-template" id="canada.htm">
+        <h2>Canada</h2>
+        <p>{{ message }}</p>
+    </script>
+
+    <script type="text/ng-template" id="uK.htm">
+        <h2>UK</h2>
+        <p>{{ message }}</p>
+    </script>
+    
+    <script>
+        let app = angular.module("myApp", ["ngRoute"]);
+
+        app.config(function ($routeProvider) {
+            $routeProvider
+                .when("/", {
+                    templateUrl: "Main.htm"
+                })
+                .when("/Canada", {
+                    templateUrl: "canada.htm",
+                    controller : "CanadaCtrl"
+                })
+                .when("/UK", {
+                    templateUrl: "uK.htm",
+                    controller : "UKCtrl"
+                });
+        });
+
+        app.controller("CanadaCtrl", function ($scope) {
+            $scope.message = "I love Canada!";
+        });
+
+        app.controller("UKCtrl", function ($scope) {
+            $scope.message = "I love UK!";
+        });
+    </script>
+</body>
+</html>

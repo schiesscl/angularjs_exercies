@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/angular@1.8.2/angular.min.js"></script>
+</head>
+<body ng-app="myApp">
+    <div ng-controller="myController">
+        <h2>$http Service Example</h2>
+        
+        <!-- Mostrar los datos si la solicitud es exitosa -->
+        <div ng-if="content">
+            <h3>Response Content:</h3>
+            <pre>{{ content | json }}</pre>
+            <p>Status: {{ statuscode }}</p>
+        </div>
+
+        <!-- Mostrar un mensaje de error si la solicitud falla -->
+        <div ng-if="error">
+            <h3>Error:</h3>
+            <p>{{ error }}</p>
+        </div>
+    </div>
+
+    <script>
+        let app = angular.module("myApp", []);
+        app.controller('myController', function($scope, $http) {
+            // Usar una API pública para un ejemplo fiable
+            $http.get("https://jsonplaceholder.typicode.com/posts/1").then(
+                function (response) {
+                    // Función de éxito
+                    $scope.content = response.data;
+                    $scope.statuscode = response.status;
+                }, 
+                function (response) {
+                    // Función de error
+                    $scope.error = "Request failed. Status: " + response.status + " " + response.statusText;
+                }
+            );
+        });
+    </script>
+</body>
+</html>

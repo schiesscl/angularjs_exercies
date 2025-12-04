@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/angular@1.8.2/angular.min.js"></script>
+</head>
+<body ng-app="myApp">
+    <div ng-controller="myController">
+        <button ng-click="handleClick('AngularJS')">Say Hello</button>
+    </div>
+
+    <script>
+        // 1. Definir el módulo de la aplicación
+        let app = angular.module("myApp", []);
+
+        // 2. Añadir el controlador al módulo
+        app.controller('myController', function($scope) {
+            // 3. Aceptar el parámetro 'name' en la función
+            $scope.handleClick = function(name) {
+                // 4. Usar el parámetro 'name'
+                alert('Hello, ' + name + '!');
+            };
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/angular@1.8.2/angular.min.js"></script>
+    <style>
+        .error { color: red; }
+    </style>
+</head>
+<body ng-app="myApp">
+    
+    <div ng-controller="myController">
+        <form name="myForm" ng-submit="submitForm(myForm.$valid)" novalidate>
+            <label for="username">Username: </label>
+            <input type="text" id="username" name="username" ng-model="user.name" required>
+            
+            <div class="error" ng-show="myForm.$submitted || myForm.username.$dirty">
+                <span ng-show="myForm.username.$error.required">Username is required.</span>
+            </div>
+
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+    <script>
+        let app = angular.module("myApp", []);
+
+        app.controller('myController', function($scope) {
+            $scope.user = {};
+
+            $scope.submitForm = function(isValid) {
+                // Comprobar si el formulario es válido antes de enviar
+                if (isValid) {
+                    alert('Form submitted! Username: ' + $scope.user.name);
+                } else {
+                    alert('Please correct the errors in the form.');
+                }
+            };
+        });
+    </script>
+</body>
+</html>

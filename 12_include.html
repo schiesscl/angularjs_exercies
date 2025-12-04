@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/angular@1.8.2/angular.min.js"></script>
+</head>
+<body ng-app="myApp">
+    
+    <div ng-controller="myController">
+        <p>
+            <label>
+                <input type="checkbox" ng-model="isAdmin"> Is Admin
+            </label>
+        </p>
+        <!-- ng-include ahora usa una URL marcada como segura -->
+        <div ng-include="getTemplateUrl()"></div>
+    </div>
+
+    <!-- Plantilla para Administradores -->
+    <script type="text/ng-template" id="admin-main.html">
+        <h2>Admin Dashboard</h2>
+        <p>Welcome, Administrator! You have full access.</p>
+    </script>
+
+    <!-- Plantilla para Usuarios -->
+    <script type="text/ng-template" id="user-main.html">
+        <h2>User Dashboard</h2>
+        <p>Welcome, User! Here is your content.</p>
+    </script>
+
+    <script>
+        let app = angular.module("myApp", []);
+
+        // Inyectar $sce para marcar las URLs como seguras
+        app.controller('myController', function($scope, $sce) {
+            $scope.isAdmin = true; 
+
+            $scope.getTemplateUrl = function() {
+                let templateUrl = $scope.isAdmin ? 'admin-main.html' : 'user-main.html';
+                // Usar $sce.trustAsResourceUrl para evitar errores de seguridad
+                return $sce.trustAsResourceUrl(templateUrl);
+            };
+        });
+    </script>
+</body>
+</html>
